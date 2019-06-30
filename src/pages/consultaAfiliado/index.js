@@ -7,7 +7,11 @@ import Logo from "../../assets/IndicaAi-logo.svg";
 
 import { Container, Form} from "./styles";
 
+<<<<<<< HEAD
 import {FormularioSearch} from './FormularioSearch.js';//Style form Formulario
+=======
+import {FormularioSearch} from './FormularioSearch.js';
+>>>>>>> 6006fbf786f38f31684a5f0a10cf118ce9491b2a
 
 class consultaAfiliado extends Component{
     state ={
@@ -19,11 +23,16 @@ class consultaAfiliado extends Component{
 
     handleSearchAffiliate = async e => {
         e.preventDefault();
+<<<<<<< HEAD
         const { nameAffiliate, afiliado} = this.state;
+=======
+        const { nameAffiliate, emailAffiliate, numberPhoneAffiliate, nameCliente} = this.state;
+>>>>>>> 6006fbf786f38f31684a5f0a10cf118ce9491b2a
         if (!nameAffiliate){
             return(alert("Preencha todas as informações do afiliado"));
         }else{
             try {
+<<<<<<< HEAD
               const response = await api.get("/search/consultaAfiliado",{ nameAffiliate });
               console.log(response);
               return(alert(
@@ -31,12 +40,28 @@ class consultaAfiliado extends Component{
               ));
             }catch (err) {
               console.log(err);
+=======
+                const response = await api.get("/search/consultaAfiliado",{ nameAffiliate, emailAffiliate, numberPhoneAffiliate, nameCliente });
+              return(console.log([
+                response,
+                nameAffiliate,
+                emailAffiliate,
+                numberPhoneAffiliate,
+                nameCliente
+              ]));
+            }catch (err) {
+>>>>>>> 6006fbf786f38f31684a5f0a10cf118ce9491b2a
               return(alert("Houve um erro, tente novamente."));
             }
         }
     };
+<<<<<<< HEAD
   
       handleCadastroCliente = async e => {
+=======
+    
+    handleCadastroCliente = async e => {
+>>>>>>> 6006fbf786f38f31684a5f0a10cf118ce9491b2a
         e.preventDefault();
         this.props.history.push("/cadastroCliente");
       };
@@ -72,10 +97,13 @@ class consultaAfiliado extends Component{
             />
             <hr />
             <button type="submit">Buscar</button> 
+<<<<<<< HEAD
 
             <ul> 
               
             </ul>
+=======
+>>>>>>> 6006fbf786f38f31684a5f0a10cf118ce9491b2a
           </FormularioSearch>
         </Container>
         )
