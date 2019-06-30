@@ -28,6 +28,7 @@ class cadastroCliente extends Component{
               const response = await api.post("/create/cadastroCliente",{nameClient, CPF, emailClient, idJiva, numberPhone, car, board});
               return(alert("Cliente cadastrado"));
             }catch (err) {
+              console.log(err);
               return(alert("Cliente já cadastrado"));
             }
         }
