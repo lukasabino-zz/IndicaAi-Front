@@ -19,12 +19,12 @@ class consultaAfiliado extends Component{
 
     handleSearchAffiliate = async e => {
         e.preventDefault();
-        const { nameAffiliate, afiliado} = this.state;
-        if (!nameAffiliate){
+        const { CPF, afiliado} = this.state;
+        if (!CPF){
             return(alert("Preencha todas as informações do afiliado"));
         }else{
             try {
-              const response = await api.get("/search/consultaAfiliado",{ nameAffiliate });
+              const response = await api.get("/search/consultaAfiliado",{ CPF });
               console.log(response);
               return(alert(
                 response.data[afiliado]
@@ -66,9 +66,9 @@ class consultaAfiliado extends Component{
         </Form>
           <FormularioSearch onSubmit={this.handleSearchAffiliate}>
             <input 
-            type="text"
+            type="number"
             placeholder="Nome do afiliado"
-            onChange={e => this.setState({ nameAffiliate: e.target.value })}
+            onChange={e => this.setState({ CPF: e.target.value })}
             />
             <hr />
             <button type="submit">Buscar</button> 
