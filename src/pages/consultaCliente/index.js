@@ -7,6 +7,8 @@ import Logo from "../../assets/IndicaAi-logo.svg";
 
 import { Container, Form} from "./styles";
 
+import { FormularioSearch} from "../consultaAfiliado/FormularioSearch";
+
 class consultaCliente extends Component{
     state ={
 	    CPF:""
@@ -57,9 +59,12 @@ class consultaCliente extends Component{
           <button type="submit" onClick={this.handleCadastroAfiliado}>Cadastro Afiliado</button>
           <button type="submit" onClick={this.handleConsultaAfiliado}>Consulta Afiliado</button>
           <button type="submit" onClick={this.handleConsultaCliente}>Consulta Cliente</button>
-        
           <Link to="/">Sair</Link>
         </Form>
+        <FormularioSearch onSubmit={this.handleSearchAffiliate}>
+              <p>Desculpe o transtorno.</p>
+              <p>Este recurso ainda não está disponivel.</p>
+          </FormularioSearch>
       </Container>
         )
     }

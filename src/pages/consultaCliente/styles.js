@@ -44,4 +44,8 @@ export const Form = styled.form`
     color: #999;
     text-decoration: none;
   }
+  p{
+      color: #FF0000;
+      font-size: 20px;
+    }
 `;

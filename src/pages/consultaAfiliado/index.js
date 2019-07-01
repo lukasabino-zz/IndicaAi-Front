@@ -19,7 +19,7 @@ class consultaAfiliado extends Component{
 
     handleSearchAffiliate = async e => {
         e.preventDefault();
-        const { nameAffiliate, afiliado} = this.state;
+        const { nameAffiliate, afiliado, nameCliente, emailAffiliate, numberPhoneAffiliate} = this.state;
         if (!nameAffiliate){
             return(alert("Preencha todas as informações do afiliado"));
         }else{
@@ -27,7 +27,7 @@ class consultaAfiliado extends Component{
               const response = await api.get("/search/consultaAfiliado",{ nameAffiliate });
               console.log(response);
               return(alert(
-                response.data[afiliado]
+                response.data.alliado[2]
               ));
             }catch (err) {
               console.log(err);
@@ -65,17 +65,8 @@ class consultaAfiliado extends Component{
           <Link to="/">Sair</Link>
         </Form>
           <FormularioSearch onSubmit={this.handleSearchAffiliate}>
-            <input 
-            type="text"
-            placeholder="Nome do afiliado"
-            onChange={e => this.setState({ nameAffiliate: e.target.value })}
-            />
-            <hr />
-            <button type="submit">Buscar</button> 
-
-            <ul> 
-              
-            </ul>
+              <p>Desculpe o transtorno.</p>
+              <p>Este recurso ainda não está disponivel.</p>
           </FormularioSearch>
         </Container>
         )

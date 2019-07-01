@@ -24,4 +24,9 @@ export const FormularioSearch = styled.form`
       border-radius: 5px;
       width: 560px;
     }
+
+    p{
+      color: #FF0000;
+      font-size: 20px;
+    }
 `;
