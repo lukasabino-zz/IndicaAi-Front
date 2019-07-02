@@ -42,7 +42,7 @@ class cadastroAfiliado extends Component{
         document.getElementById("email").value = "";
         document.getElementById("numero").value = "";
         document.getElementById("nomeCliente").value = "";
-      }
+      };
   
     
     handleCadastroCliente = async e => {

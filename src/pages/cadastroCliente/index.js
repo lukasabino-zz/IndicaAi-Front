@@ -35,6 +35,15 @@ class cadastroCliente extends Component{
         }
     };
     
+    handleApagarForm = async e =>{
+      e.preventDefault();
+      setInterval(170);
+      document.getElementById("nome").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("numero").value = "";
+      document.getElementById("nomeCliente").value = "";
+    };
+
     handleCadastroCliente = async e => {
         e.preventDefault();
         this.props.history.push("/cadastroCliente");
@@ -101,6 +110,8 @@ class cadastroCliente extends Component{
           />
           <hr />
           <button type="submit">Salvar</button>
+          <button type="submit" onClick={this.handleApagarForm}>Limpar</button>
+
         </Formulario>
       </Container>
         )
