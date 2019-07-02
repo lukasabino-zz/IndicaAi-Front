@@ -10,6 +10,7 @@ import { Container, Form} from "./styles";
 import { Formulario } from "./styleFormulario";
 
 class cadastroAfiliado extends Component{
+    
     state ={
     nameAffiliate:"",
     emailAffiliate:"",
@@ -17,7 +18,8 @@ class cadastroAfiliado extends Component{
     nameCliente:""
     };
 
-    handleAddAfiliado = async e => {
+    
+    handleAddAfiliado = async (e) => {
         e.preventDefault();
         const { nameAffiliate, emailAffiliate, numberPhoneAffiliate, nameCliente } = this.state;
         if (!nameAffiliate || !emailAffiliate || !numberPhoneAffiliate || !nameCliente){
@@ -25,13 +27,23 @@ class cadastroAfiliado extends Component{
         }else{
             try {
                 const response = await api.post("/create/cadastroAfiliado",{ nameAffiliate, emailAffiliate, numberPhoneAffiliate, nameCliente });
-                console.log(response)
-               return(alert("Afiliado adicionado!"));
+                console.log(response);
+                return(alert("Afiliado adicionado!"));
             }catch (err) {
                 return(alert("Afiliado ja cadastrado."));
             }
         }
-    };
+      };
+
+      handleApagarForm = async e =>{
+        e.preventDefault();
+        setInterval(170);
+        document.getElementById("nome").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("numero").value = "";
+        document.getElementById("nomeCliente").value = "";
+      }
+  
     
     handleCadastroCliente = async e => {
         e.preventDefault();
@@ -49,6 +61,7 @@ class cadastroAfiliado extends Component{
         e.preventDefault();
         this.props.history.push("/consultaAfiliado");
       };
+      
     render() {
         return (
         <Container>
@@ -61,30 +74,35 @@ class cadastroAfiliado extends Component{
         
           <Link to="/">Sair</Link>
         </Form>
-        <Formulario onSubmit={this.handleAddAfiliado}>
+        <Formulario onSubmit={this.handleAddAfiliado} >
           <input
             type="text"
             placeholder="Nome"
+            id="nome"
             onChange={e => this.setState({ nameAffiliate: e.target.value })}
           />
           <input
             type="email"
             placeholder="E-Mail"
+            id="email"
             onChange={e => this.setState({ emailAffiliate: e.target.value })}
           />
           <input
             type="number"
-
             placeholder="(xx)xx-xx-xx-xx"
+            id="numero"
             onChange={e => this.setState({ numberPhoneAffiliate: e.target.value })}
           />
           <input
             type="text"
             placeholder="Nome do cliente"
+            id="nomeCliente"
             onChange={e => this.setState({ nameCliente: e.target.value })}
           />
           <hr />
-          <button type="submit">Salvar</button>
+          <button type="submit" >Salvar</button>
+
+          <button type="submit" onClick={this.handleApagarForm}>Limpar</button>
         </Formulario>
       </Container>
         )

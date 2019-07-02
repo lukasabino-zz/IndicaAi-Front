@@ -27,7 +27,7 @@ export const Formulario = styled.form`
     font-size: 16px;
     background: #14E5FF;
     height: 40px;
-    border: 0;
+    border: 5px;
     border-radius: 5px;
     width: 560px;
   }
