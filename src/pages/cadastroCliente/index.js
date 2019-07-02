@@ -41,7 +41,10 @@ class cadastroCliente extends Component{
       document.getElementById("nome").value = "";
       document.getElementById("email").value = "";
       document.getElementById("numero").value = "";
-      document.getElementById("nomeCliente").value = "";
+      document.getElementById("CPF").value = "";
+      document.getElementById("JIVA").value = "";
+      document.getElementById("auto").value = "";
+      document.getElementById("placa").value = "";
     };
 
     handleCadastroCliente = async e => {
@@ -76,36 +79,43 @@ class cadastroCliente extends Component{
           <input
             type="text"
             placeholder="Nome"
+            id="nome"
             onChange={e => this.setState({ nameClient: e.target.value })}
           />
           <input
             type="email"
             placeholder="E-Mail"
+            id="email"
             onChange={e => this.setState({ emailClient: e.target.value })}
           />
           <input
             type="number"
             placeholder="CPF"
+            id="CPF"
             onChange={e => this.setState({ CPF: e.target.value })}
           />
           <input
           type="number"
           placeholder="JIVA"
+          id="JIVA"
           onChange={e => this.setState({ idJiva: e.target.value })}
           />
           <input
             type="number"
             placeholder="Numero telefone"
+            id="numero"
             onChange={e => this.setState({ numberPhone: e.target.value })}
           />
           <input
             type="text"
             placeholder="Automovel"
+            id="auto"
             onChange={e => this.setState({ car: e.target.value })}
           />
           <input
             type="text"
             placeholder="Placa do automovel"
+            id="placa"
             onChange={e => this.setState({ board: e.target.value })}
           />
           <hr />
