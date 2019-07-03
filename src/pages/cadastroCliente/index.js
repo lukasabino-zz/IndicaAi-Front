@@ -120,8 +120,8 @@ class cadastroCliente extends Component{
           />
           <hr />
           <button type="submit">Salvar</button>
-          <button type="submit" onClick={this.handleApagarForm}>Limpar</button>
 
+          <button type="submit" onClick={this.handleApagarForm}>Limpar</button>
         </Formulario>
       </Container>
         )

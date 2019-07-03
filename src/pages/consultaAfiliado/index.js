@@ -19,17 +19,16 @@ class consultaAfiliado extends Component{
 
     handleSearchAffiliate = async e => {
         e.preventDefault();
-        const { nameAffiliate, afiliado } = this.state;
+        const { nameAffiliate } = this.state;
         if (!nameAffiliate){
             return(alert("Preencha todas as informações do afiliado"));
         }else{
             try {
-              const response = await api.get(
-                "/search/consultaAfiliado",
-                { nameAffiliate }
-              );
-              console.log(response);
-              //return (response);
+              const response = await api.get("/search/consultaAfiliado",{ nameAffiliate });
+
+              return(console.log({
+                response
+              }));
             }catch (err) {
               console.log(err);
               return(alert("Houve um erro, tente novamente."));
