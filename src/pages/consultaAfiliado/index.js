@@ -7,28 +7,26 @@ import Logo from "../../assets/IndicaAi-logo.svg";
 
 import { Container, Form} from "./styles";
 
-import {FormularioSearch} from './FormularioSearch.js';//Style form Formulario
+import { FormularioSearch } from './FormularioSearch.js';//Style form Formulario
 
 class consultaAfiliado extends Component{
+    
     state ={
-      nameAffiliate:"",
-      emailAffiliate:"",
-      numberPhoneAffiliate: "",
-      nameCliente:""
+      nameAffiliate:"nameAffiliate"
     };
 
     handleSearchAffiliate = async e => {
         e.preventDefault();
         const { nameAffiliate } = this.state;
+        
         if (!nameAffiliate){
             return(alert("Preencha todas as informações do afiliado"));
         }else{
             try {
               const response = await api.get("/search/consultaAfiliado",{ nameAffiliate });
-
-              return(console.log({
-                response
-              }));
+              return(
+              console.log(response)
+              );
             }catch (err) {
               console.log(err);
               return(alert("Houve um erro, tente novamente."));
