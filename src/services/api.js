@@ -5,6 +5,7 @@ const api = axios.create({
   baseURL: "https://indicaai-backend.herokuapp.com/",
   headers: {
     'Access-Control-Allow-Origin': true,
+    'Content-Type': 'application/json',
   },
 });
 

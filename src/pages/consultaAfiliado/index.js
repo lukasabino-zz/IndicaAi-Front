@@ -12,7 +12,7 @@ import { FormularioSearch } from './FormularioSearch.js';//Style form Formulario
 class consultaAfiliado extends Component{
     
     state ={
-      nameAffiliate:"nameAffiliate"
+      nameAffiliate:""
     };
 
     handleSearchAffiliate = async e => {
@@ -23,12 +23,16 @@ class consultaAfiliado extends Component{
             return(alert("Preencha todas as informações do afiliado"));
         }else{
             try {
-              const response = await api.get("/search/consultaAfiliado",{ nameAffiliate });
+              const response = await api.post(`/search/consultaAfiliado?nameAffiliate=${nameAffiliate}`);
+
               return(
-              console.log(response)
+              console.log(response.data)
               );
+              
             }catch (err) {
+             
               console.log(err);
+             
               return(alert("Houve um erro, tente novamente."));
             }
         }

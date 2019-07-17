@@ -7,32 +7,35 @@ import Logo from "../../assets/IndicaAi-logo.svg";
 
 import { Container, Form} from "./styles";
 
-import { FormularioSearch} from "../consultaAfiliado/FormularioSearch";
+import { FormularioSearch} from "./FormularioSearch";
 
 class consultaCliente extends Component{
     state ={
 	    CPF:""
     };
 
-    handleAddCliente = async e => {
-        e.preventDefault();
-        const { CPF } = this.state;
-        if (!CPF){
-            this.setState({ error: "Preencha todas as informações do cliente"});
-        }else{
-            try {
-                const response = await api.post("/search/consultaCliente",{ CPF });
-                    if(response.ok){
-                        return("Cliente: ");
-                    }
-            }catch (err) {
-                this.setState({
-                    error:
-                    "Houve um problema com a consulta do cliente, verifique as informações e tente novamente"
-                });
-            }
-        }
-    };
+    handleSearchCliente = async e => {
+      e.preventDefault();
+      const { CPF } = this.state;
+      
+      if (!CPF){
+          return(alert("Preencha todas as informações do cliente"));
+      }else{
+          try {
+            const response = await api.get(`search/consultaCliente?CPF=${CPF}`);
+
+            return(
+            console.log(response.data)
+            );
+            
+          }catch (err) {
+           
+            console.log(err);
+           
+            return(alert("Houve um erro, tente novamente."));
+          }
+      }
+  };
     
     handleCadastroCliente = async e => {
         e.preventDefault();
@@ -61,9 +64,16 @@ class consultaCliente extends Component{
           <button type="submit" onClick={this.handleConsultaCliente}>Consulta Cliente</button>
           <Link to="/">Sair</Link>
         </Form>
-        <FormularioSearch onSubmit={this.handleSearchAffiliate}>
-              <p>Desculpe o transtorno.</p>
-              <p>Este recurso ainda não está disponivel.</p>
+        <FormularioSearch onSubmit={this.handleSearchCliente}>
+            <input 
+            type="number"
+            placeholder="CPF do Cliente"
+            onChange={e => this.setState({ CPF: e.target.value })}
+            />
+            
+            <hr />
+            
+            <button type="submit">Buscar</button> 
           </FormularioSearch>
       </Container>
         )
