@@ -14,7 +14,7 @@ class consultaAfiliado extends Component{
     state ={
       nameAffiliate:""
     };
-
+    
     handleSearchAffiliate = async e => {
         e.preventDefault();
         const { nameAffiliate } = this.state;
@@ -24,15 +24,19 @@ class consultaAfiliado extends Component{
         }else{
             try {
               const response = await api.post(`/search/consultaAfiliado?nameAffiliate=${nameAffiliate}`);
-
+              const ArrayRes = response.data;
+              console.log(ArrayRes);
+                
               return(
-              console.log(response.data)
+                  ArrayRes.map((afiliado) => ( 
+                  <tr>{afiliado.nameAffiliate}</tr>
+                ))
               );
               
             }catch (err) {
-             
+              
               console.log(err);
-             
+              
               return(alert("Houve um erro, tente novamente."));
             }
         }
@@ -54,11 +58,15 @@ class consultaAfiliado extends Component{
         e.preventDefault();
         this.props.history.push("/consultaAfiliado");
       };
+      handleRedirectHome = async e => {
+        e.preventDefault();
+        this.props.history.push("/home");
+      };
     render() {
         return (
         <Container>
         <Form>
-          <img src={Logo} alt="IndicaAi Logo" ahref="/home"/>
+          <img src={Logo} alt="IndicaAi Logo" onClick={this.handleRedirectHome}/>
           <button type="submit" onClick={this.handleCadastroCliente}>Cadastro Cliente</button>
           <button type="submit" onClick={this.handleCadastroAfiliado}>Cadastro Afiliado</button>
           <button type="submit" onClick={this.handleConsultaAfiliado}>Consulta Afiliado</button>

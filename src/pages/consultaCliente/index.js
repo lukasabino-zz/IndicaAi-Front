@@ -24,8 +24,10 @@ class consultaCliente extends Component{
           try {
             const response = await api.get(`search/consultaCliente?CPF=${CPF}`);
 
+            const ArrayRes = response.data;
+
             return(
-            console.log(response.data)
+            console.log(ArrayRes)
             );
             
           }catch (err) {
@@ -53,11 +55,15 @@ class consultaCliente extends Component{
         e.preventDefault();
         this.props.history.push("/consultaAfiliado");
       };
+      handleRedirectHome = async e => {
+        e.preventDefault();
+        this.props.history.push("/home");
+      };
     render() {
         return (
         <Container>
         <Form>
-          <img src={Logo} alt="IndicaAi Logo" ahref="/home"/>
+          <img src={Logo} alt="IndicaAi Logo" onClick={this.handleRedirectHome}/>
           <button type="submit" onClick={this.handleCadastroCliente}>Cadastro Cliente</button>
           <button type="submit" onClick={this.handleCadastroAfiliado}>Cadastro Afiliado</button>
           <button type="submit" onClick={this.handleConsultaAfiliado}>Consulta Afiliado</button>
