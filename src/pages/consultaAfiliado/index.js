@@ -24,15 +24,9 @@ class consultaAfiliado extends Component{
         }else{
             try {
               const response = await api.post(`/search/consultaAfiliado?nameAffiliate=${nameAffiliate}`);
-              const ArrayRes = response.data;
-              console.log(ArrayRes);
                 
-              return(
-                  ArrayRes.map((afiliado) => ( 
-                  <tr>{afiliado.nameAffiliate}</tr>
-                ))
-              );
-              
+              console.log(response.data);
+
             }catch (err) {
               
               console.log(err);
