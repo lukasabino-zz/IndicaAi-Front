@@ -1,7 +1,0 @@
-<input 
-            type="text"
-            placeholder="Nome do afiliado"
-            onChange={e => this.setState({ nameAffiliate: e.target.value })}
-            />
-            <hr />
-            <button type="submit">Buscar</button> 

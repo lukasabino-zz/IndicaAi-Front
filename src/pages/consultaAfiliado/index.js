@@ -24,8 +24,12 @@ class consultaAfiliado extends Component{
         }else{
             try {
               const response = await api.post(`/search/consultaAfiliado?nameAffiliate=${nameAffiliate}`);
-                
-              console.log(response.data);
+
+              const obj = response.data; 
+
+              //const result = JSON.stringify(obj);
+
+              console.log(obj);
 
             }catch (err) {
               
